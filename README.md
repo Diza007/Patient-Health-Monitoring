@@ -9,26 +9,18 @@ https://hell24.shinyapps.io/project_directory/
 
 library(shiny)
 library(rsconnect)
-
-# Set your shinyapps.io account details
 rsconnect::setAccountInfo(name='hell24',
                           token='AC01515C93054BD01F4FE48E329D889C',
                           secret='Diai+I0rT68PfB1JknN+h4JsfF/9UjpHXEy3Vdwk')
 
-# Deploy the app
 rsconnect::deployApp ("C://Users//hadiz//OneDrive//Documents//Project Directory")
-# Load required libraries
 library(shiny)
 library(ggplot2)
 library(readxl)
-
-# Set working directory
 setwd("C:/Users/hadiz/OneDrive/Documents/Project Directory/")
 
-# Load data
 data <- read_excel("Patient DATA (1).xlsx")
 
-# Define UI
 ui <- shinyUI(fluidPage(
   titlePanel("Patient Data Visualization"),
   
@@ -47,10 +39,8 @@ ui <- shinyUI(fluidPage(
   )
 ))
 
-# Define server
 server <- function(input, output) {
   
-  # Create a reactive function for plotting
   output$patientPlot <- renderPlot({
     
     # Filter data based on selected age range
@@ -65,6 +55,5 @@ server <- function(input, output) {
   })
 }
 
-# Run the Shiny app
 shinyApp(ui = ui, server = server)
 
